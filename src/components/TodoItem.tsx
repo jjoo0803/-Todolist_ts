@@ -1,18 +1,21 @@
 import './TodoStyle.scss'
-import { TodoObject } from './TodoListContainer'
+import { TodoObject } from '../interface/type'
 
-interface todoType {
+interface todoProps {
   todo: TodoObject
+  index: number,
+  deleteTodo: (index: number) => void
 }
 
-function TodoItem ({ todo }: todoType) {
-  const { idx, content, complete } = todo
+function TodoItem ({ todo, index, deleteTodo }: todoProps) {
+  const {content, complete} = todo
 
   return (
     <div className='todo-item'>
-      <div>{ idx }</div>
+      <div>{ index }</div>
       <div> { content }</div>
       <div>{ complete ? 'true': 'false'}</div>
+      <button onClick={() => {deleteTodo(index)}}>삭제</button>
     </div>
   )
 }

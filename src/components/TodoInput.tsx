@@ -1,6 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 
-function TodoInput () {
+
+interface propsType {
+  addTodo: (todo: string) => void
+}
+
+function TodoInput ({addTodo}: propsType) {
 
   const [text, setText] = useState('')
 
@@ -8,18 +13,24 @@ function TodoInput () {
     setText(e.target.value)
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  // const onClickButton = useCallback(() => {
+  //   handleTodo(text)
+  // }, [handleTodo, text])
+
+  const onClickButton = (e:React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    addTodo(text)
     setText('')
   }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <input name="content" value={text} onChange={onChange} />
-      <button type="submit">
+      <button onClick={onClickButton}>
         등록
       </button>
-    </form>
+    </div>
   )
 }
 
-export default TodoInput
+export default React.memo(TodoInput)
