@@ -1,5 +1,5 @@
 import './TodoStyle.scss'
-import { TodoObject } from '../interface/type'
+import { TodoObject } from '../interface/interface'
 
 interface todoProps {
   todo: TodoObject

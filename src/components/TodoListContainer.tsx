@@ -2,7 +2,7 @@ import { useState } from "react"
 import TodoItem from './TodoItem'
 import TodoInput from './TodoInput'
 
-import { TodoObject } from "../interface/type"
+import { TodoObject } from "../interface/interface"
 
 function TodoListContainer () {
 
