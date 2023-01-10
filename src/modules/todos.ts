@@ -6,9 +6,7 @@ const TOGGLE_TODO = 'todos/TOGGLE_TODO' as const
 // action 정의
 export const addTodo = (text: string) => ({
     type: ADD_TODO,
-    payload: {
-        text
-    }
+    payload: text
 })
 
 export const deleteTodo = (id: string) => ({
@@ -53,7 +51,7 @@ function todos (
         case ADD_TODO:
             return state.concat({
                 id: Date.now().toString(36) + Math.random().toString(36).substring(2),
-                text: action.payload.text,
+                text: action.payload,
                 done: false
             })
         case DELETE_TODO:
