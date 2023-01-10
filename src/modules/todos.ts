@@ -4,20 +4,19 @@ const DELETE_TODO = 'todos/DELETE_TODO' as const
 const TOGGLE_TODO = 'todos/TOGGLE_TODO' as const
 
 // action 정의
-export const addTodo = (text: String) => ({
+export const addTodo = (text: string) => ({
     type: ADD_TODO,
     payload: {
-        id: Date.now().toString(36) + Math.random().toString(36).substring(2),
         text
     }
 })
 
-export const deleteTodo = (id: String) => ({
+export const deleteTodo = (id: string) => ({
     type: DELETE_TODO,
     payload: id
 })
 
-export const toggleTodo = (id: String) => ({
+export const toggleTodo = (id: string) => ({
     type: TOGGLE_TODO,
     payload: id
 })
@@ -53,8 +52,8 @@ function todos (
     switch (action.type) {
         case ADD_TODO:
             return state.concat({
-                id: '',
-                text: '',
+                id: Date.now().toString(36) + Math.random().toString(36).substring(2),
+                text: action.payload.text,
                 done: false
             })
         case DELETE_TODO:
